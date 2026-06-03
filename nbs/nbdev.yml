@@ -1,0 +1,9 @@
+project:
+  output-dir: _docs
+
+website:
+  title: "moso"
+  site-url: "https://dienhoa.github.io/moso"
+  description: ""
+  repo-branch: main
+  repo-url: "https://github.com/dienhoa/moso"

@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "moso"
+dynamic = ["version"]
+description = ""
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "Apache-2.0"}
+authors = [{name = "Dien Hoa", email = "dienhoa.t@gmail.com"}]
+keywords = ['nbdev']
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+]
+dependencies = []
+
+[project.urls]
+Repository = "https://github.com/dienhoa/moso"
+Documentation = "https://dienhoa.github.io/moso/"
+
+[project.entry-points.nbdev]
+moso = "moso._modidx:d"
+
+[tool.setuptools.dynamic]
+version = {attr = "moso.__version__"}
+
+[tool.setuptools.packages.find]
+include = ["moso"]
+
+[tool.nbdev]
