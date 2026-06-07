@@ -17,6 +17,9 @@ classifiers = [
 ]
 dependencies = []
 
+[project.optional-dependencies]
+dev = ["nbdev"]
+
 [project.urls]
 Repository = "https://github.com/dienhoa/moso"
 Documentation = "https://dienhoa.github.io/moso/"
