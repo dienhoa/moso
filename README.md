@@ -8,13 +8,10 @@ program across multiple notebook cells. All `%%moso` cells are
 collected, compiled, and run together as a single Mojo script. The last
 collected cell is wrapped in `def main() raises:`.
 
-`moso` supports two environments:
-
-- **[SolveIt](https://solve.it.com/)** (primary): collects `%%moso`
-  cells up to the currently running cell.
-- **Jupyter Notebook**: collects all `%%moso` cells in the notebook file
-  and runs them together. Standard Jupyter doesn’t expose which cell is
-  currently executing, so for now we simply collect everything.
+`moso` primarily supports SolveIt (from Answer.ai) because it allows the
+tool to identify which cell is currently executing. In a standard
+Jupyter Notebook environment, the magic simply collects all cells
+containing `%%moso`.
 
 ## Install
 
@@ -63,7 +60,8 @@ setup_moso(host="user@host", cmd="cd ~/mojo-gpu-puzzles && /root/.pixi/bin/pixi 
 
 [`filter_moso`](https://dienhoa.github.io/moso/core.html#filter_moso)
 strips the `%%moso` lines, concatenates previous cells, and wraps the
-current cell in `def main() raises:`.
+current cell in a `main()` (or the last cell in standard Jupyter
+Notebook).
 [`setup_moso`](https://dienhoa.github.io/moso/core.html#setup_moso)
 registers the IPython cell magic and runs the generated source either
 locally or over SSH.
