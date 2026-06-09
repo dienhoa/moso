@@ -1,0 +1,72 @@
+[
+  {
+    "objectID": "core.html",
+    "href": "core.html",
+    "title": "core",
+    "section": "",
+    "text": "source\n\nfilter_moso\n\ndef filter_moso(\n    msgs\n):\n\nStrip %%moso magic lines and concatenate into one Mojo source\n\nsource\n\n\nget_moso\n\nasync def get_moso(\n    nb_path:NoneType=None\n):\n\nGet concatenated Mojo source, dispatching by environment\n\nsource\n\n\nsetup_moso\n\ndef setup_moso(\n    host:NoneType=None, cmd:str='mojo run {path}', path:str='/tmp/cell.mojo', nb_path:NoneType=None\n):\n\nRegister the %%moso magic",
+    "crumbs": [
+      "core"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "moso",
+    "section": "",
+    "text": "moso provides a %%moso cell magic that lets you build up a Mojo program across multiple notebook cells. All %%moso cells are collected, compiled, and run together as a single Mojo script. The last collected cell is wrapped in def main() raises:.\nmoso primarily supports SolveIt (from Answer.ai) because it allows the tool to identify which cell is currently executing. In a standard Jupyter Notebook environment, the magic simply collects all cells containing %%moso.",
+    "crumbs": [
+      "moso"
+    ]
+  },
+  {
+    "objectID": "index.html#learn-more",
+    "href": "index.html#learn-more",
+    "title": "moso",
+    "section": "Learn more",
+    "text": "Learn more\n\nIterative Mojo Programming with %%moso explains why moso exists and how it supports iterative Mojo development in SolveIt.\nLearning Mojo with SolveIt walks through learning Mojo with SolveIt.",
+    "crumbs": [
+      "moso"
+    ]
+  },
+  {
+    "objectID": "index.html#install",
+    "href": "index.html#install",
+    "title": "moso",
+    "section": "Install",
+    "text": "Install\nInstall from PyPI:\npip install moso\nOr install an editable checkout for local development:\npip install -e .",
+    "crumbs": [
+      "moso"
+    ]
+  },
+  {
+    "objectID": "index.html#usage",
+    "href": "index.html#usage",
+    "title": "moso",
+    "section": "Usage",
+    "text": "Usage\n\nSolveIt\nfrom moso.core import *\nsetup_moso()\n\n\nJupyter Notebook\nfrom moso.core import *\nsetup_moso(nb_path='path/to/your/notebook.ipynb')\nThen write Mojo code in %%moso cells. Earlier %%moso cells are treated as reusable definitions, and the final cell is wrapped in def main() raises::\n%%moso\ndef add(a: Int, b: Int) -&gt; Int:\n    return a + b\n%%moso\nprint(add(40, 2))\nFor example, check which GPU Mojo can see:\n%%moso\nfrom std.gpu.host import DeviceContext\n\nvar ctx = DeviceContext()\nprint(ctx.name())",
+    "crumbs": [
+      "moso"
+    ]
+  },
+  {
+    "objectID": "index.html#remote-execution",
+    "href": "index.html#remote-execution",
+    "title": "moso",
+    "section": "Remote execution",
+    "text": "Remote execution\nPass an SSH host and command template if Mojo runs on another machine. In a Jupyter notebook, include the notebook path so moso can collect the %%moso cells from the file on disk:\nfrom moso.core import *\n\nsetup_moso(\n    host=\"user@host\",\n    cmd=\"cd ~/mojo-gpu-puzzles && /root/.pixi/bin/pixi run mojo run {path}\",\n    nb_path=\"/path/to/your/notebook.ipynb\",\n)",
+    "crumbs": [
+      "moso"
+    ]
+  },
+  {
+    "objectID": "index.html#how-it-works",
+    "href": "index.html#how-it-works",
+    "title": "moso",
+    "section": "How it works",
+    "text": "How it works\nfilter_moso strips the %%moso lines, concatenates previous cells, and wraps the current cell in a main() (or the last cell in standard Jupyter Notebook). setup_moso registers the IPython cell magic and runs the generated source either locally or over SSH.",
+    "crumbs": [
+      "moso"
+    ]
+  }
+]
