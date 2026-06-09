@@ -13,6 +13,16 @@ tool to identify which cell is currently executing. In a standard
 Jupyter Notebook environment, the magic simply collects all cells
 containing `%%moso`.
 
+## Learn more
+
+- [Iterative Mojo Programming with
+  `%%moso`](https://dien-hoa-truong-blog.solveit.pub/blog/moso) explains
+  why `moso` exists and how it supports iterative Mojo development in
+  SolveIt.
+- [Learning Mojo with
+  SolveIt](https://dien-hoa-truong-blog.solveit.pub/blog/puzzle_1_map)
+  walks through learning Mojo with SolveIt.
+
 ## Install
 
 Install from PyPI:
