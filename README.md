@@ -15,6 +15,14 @@ containing `%%moso`.
 
 ## Install
 
+Install from PyPI:
+
+``` sh
+pip install moso
+```
+
+Or install an editable checkout for local development:
+
 ``` sh
 pip install -e .
 ```
@@ -35,7 +43,9 @@ from moso.core import *
 setup_moso(nb_path='path/to/your/notebook.ipynb')
 ```
 
-Then write Mojo code in `%%moso` cells:
+Then write Mojo code in `%%moso` cells. Earlier `%%moso` cells are
+treated as reusable definitions, and the final cell is wrapped in
+`def main() raises:`:
 
 ``` python
 %%moso
@@ -48,12 +58,30 @@ def add(a: Int, b: Int) -> Int:
 print(add(40, 2))
 ```
 
-## Remote execution
-
-Pass an SSH host and command template if Mojo runs on another machine:
+For example, check which GPU Mojo can see:
 
 ``` python
-setup_moso(host="user@host", cmd="cd ~/mojo-gpu-puzzles && /root/.pixi/bin/pixi run mojo run {path}")
+%%moso
+from std.gpu.host import DeviceContext
+
+var ctx = DeviceContext()
+print(ctx.name())
+```
+
+## Remote execution
+
+Pass an SSH host and command template if Mojo runs on another machine.
+In a Jupyter notebook, include the notebook path so `moso` can collect
+the `%%moso` cells from the file on disk:
+
+``` python
+from moso.core import *
+
+setup_moso(
+    host="user@host",
+    cmd="cd ~/mojo-gpu-puzzles && /root/.pixi/bin/pixi run mojo run {path}",
+    nb_path="/path/to/your/notebook.ipynb",
+)
 ```
 
 ## How it works

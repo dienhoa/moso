@@ -18,7 +18,10 @@ classifiers = [
 dependencies = []
 
 [project.optional-dependencies]
-dev = ["nbdev"]
+dev = [
+    "nbdev",
+    "twine>=6.2.0",
+]
 
 [project.urls]
 Repository = "https://github.com/dienhoa/moso"
